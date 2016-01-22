@@ -43,3 +43,11 @@ To use a specific `jolokia-jvm` version, add the following to your `build.sbt` f
 ```scala
 jolokiaVersion := "1.3.2"
 ```
+
+## Testing
+
+This project uses `sbt-scripted` to run its tests. To test this project run:
+
+```shell
+$ sbt scripted
+```

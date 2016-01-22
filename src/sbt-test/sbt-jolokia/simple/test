@@ -1,0 +1,3 @@
+> universal:stage
+$ exists target/universal/stage/jolokia/jolokia.jar
+$ exec grep -q "addJava .*jolokia.jar" target/universal/stage/bin/app
