@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/jtescher/sbt-jolokia.svg?branch=master)](https://travis-ci.org/jtescher/sbt-jolokia)
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/ffbf70f3e2304f2e8dc89a338a4929cc)](https://www.codacy.com/app/jatescher/sbt-jolokia)
+[![Download](https://api.bintray.com/packages/jtescher/sbt-plugin-releases/sbt-jolokia/images/download.svg)](https://bintray.com/jtescher/sbt-plugin-releases/sbt-jolokia/_latestVersion)
 
 Jolokia support for any artifacts built with sbt-native-packager.
 
