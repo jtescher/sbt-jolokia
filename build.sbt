@@ -4,11 +4,19 @@ organization := "com.jatescher"
 
 name := """sbt-jolokia"""
 
-version := "0.0.1-SNAPSHOT"
+version := "0.0.1"
 
 scalaVersion := "2.10.6"
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.0.6")
+
+publishMavenStyle := false
+
+bintrayOrganization := Some("jtescher")
+
+bintrayPackageLabels := Seq("sbt", "jolokia", "sbt-native-packager")
+
+bintrayRepository := "sbt-plugin-releases"
 
 licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
 
