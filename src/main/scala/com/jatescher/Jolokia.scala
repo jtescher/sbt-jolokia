@@ -27,14 +27,16 @@ object Jolokia extends AutoPlugin {
     jolokiaVersion := "1.3.2",
     jolokiaPort := "8778",
     jolokiaHost := "0.0.0.0",
-    libraryDependencies += "org.jolokia" % "jolokia-jvm" % jolokiaVersion.value % jolokiaConfig,
+    libraryDependencies += "org.jolokia" % "jolokia-jvm" % jolokiaVersion.value % jolokiaConfig classifier "agent",
     mappings in Universal ++= Seq(
       jolokiaAgent.value -> "jolokia/jolokia.jar"
     ),
-    bashScriptExtraDefines += """addJava "-javaagent:${app_home}/../jolokia/jolokia.jar=port=${jolokiaPort},host=${jolokiaHost}""""
+    bashScriptExtraDefines += s"JOLOKIA_PORT=${jolokiaPort.value}",
+    bashScriptExtraDefines += s"JOLOKIA_HOST=${jolokiaHost.value}",
+    bashScriptExtraDefines += """addJava "-javaagent:${app_home}/../jolokia/jolokia.jar=port=${JOLOKIA_PORT},host=${JOLOKIA_HOST}""""
   )
 
-  private[this] val jolokiaFilter: DependencyFilter = configurationFilter("jolokia-jvm") && artifactFilter(`type` = "jar")
+  private[this] val jolokiaFilter: DependencyFilter = configurationFilter("jolokia-jvm") && artifactFilter(`type` = "jar", classifier = "agent")
 
   def findJolokiaAgent(report: UpdateReport) = report.matching(jolokiaFilter).head
 
