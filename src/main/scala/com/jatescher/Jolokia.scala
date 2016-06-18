@@ -24,7 +24,7 @@ object Jolokia extends AutoPlugin {
   override lazy val projectSettings = Seq(
     ivyConfigurations += jolokiaConfig,
     jolokiaAgent := findJolokiaAgent(update.value),
-    jolokiaVersion := "1.3.2",
+    jolokiaVersion := "1.3.3",
     jolokiaPort := "8778",
     jolokiaHost := "0.0.0.0",
     libraryDependencies += "org.jolokia" % "jolokia-jvm" % jolokiaVersion.value % jolokiaConfig classifier "agent",
