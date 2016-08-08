@@ -13,6 +13,7 @@ object Jolokia extends AutoPlugin {
     val jolokiaVersion = settingKey[String]("Jolokia version")
     val jolokiaPort = settingKey[String]("Jolokia port")
     val jolokiaHost = settingKey[String]("Jolokia host")
+    val jolokiaProtocol = settingKey[String]("Jolokia protocol")
   }
 
   import autoImport._
@@ -24,16 +25,18 @@ object Jolokia extends AutoPlugin {
   override lazy val projectSettings = Seq(
     ivyConfigurations += jolokiaConfig,
     jolokiaAgent := findJolokiaAgent(update.value),
-    jolokiaVersion := "1.3.3",
+    jolokiaVersion := "1.3.4",
     jolokiaPort := "8778",
     jolokiaHost := "0.0.0.0",
+    jolokiaProtocol := "https",
     libraryDependencies += "org.jolokia" % "jolokia-jvm" % jolokiaVersion.value % jolokiaConfig classifier "agent",
     mappings in Universal ++= Seq(
       jolokiaAgent.value -> "jolokia/jolokia.jar"
     ),
     bashScriptExtraDefines += s"JOLOKIA_PORT=${jolokiaPort.value}",
     bashScriptExtraDefines += s"JOLOKIA_HOST=${jolokiaHost.value}",
-    bashScriptExtraDefines += """addJava "-javaagent:${app_home}/../jolokia/jolokia.jar=port=${JOLOKIA_PORT},host=${JOLOKIA_HOST}""""
+    bashScriptExtraDefines += s"JOLOKIA_PROTOCOL=${jolokiaProtocol.value}",
+    bashScriptExtraDefines += """addJava "-javaagent:${app_home}/../jolokia/jolokia.jar=port=${JOLOKIA_PORT},host=${JOLOKIA_HOST},protocol=${JOLOKIA_PROTOCOL}""""
   )
 
   private[this] val jolokiaFilter: DependencyFilter = configurationFilter("jolokia-jvm") && artifactFilter(`type` = "jar", classifier = "agent")

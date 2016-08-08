@@ -42,7 +42,7 @@ enablePlugins(Jolokia)
 To use a specific `jolokia-jvm` version, add the following to your `build.sbt` file:
 
 ```scala
-jolokiaVersion := "1.3.2"
+jolokiaVersion := "1.3.4"
 ```
 
 ## Testing
