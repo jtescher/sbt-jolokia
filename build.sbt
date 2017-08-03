@@ -8,7 +8,7 @@ version := "1.0.3"
 
 scalaVersion := "2.10.6"
 
-addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.1.5")
+addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.2.0" % "provided")
 
 publishMavenStyle := false
 

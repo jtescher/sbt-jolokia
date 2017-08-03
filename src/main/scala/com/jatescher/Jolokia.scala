@@ -1,8 +1,10 @@
 package com.jatescher
 
 import com.typesafe.sbt.SbtNativePackager._
-import com.typesafe.sbt.packager.archetypes.JavaAppPackaging
-import com.typesafe.sbt.packager.archetypes.JavaAppPackaging.autoImport.bashScriptExtraDefines
+import com.typesafe.sbt.packager.archetypes.scripts.BashStartScriptPlugin
+import com.typesafe.sbt.packager.archetypes.scripts.BashStartScriptPlugin.autoImport._
+import com.typesafe.sbt.packager.archetypes.scripts.BatStartScriptPlugin
+import com.typesafe.sbt.packager.archetypes.scripts.BatStartScriptPlugin.autoImport._
 import sbt._
 import sbt.Keys._
 
@@ -18,14 +20,14 @@ object Jolokia extends AutoPlugin {
 
   import autoImport._
 
-  override def requires = JavaAppPackaging
+  override def requires = BashStartScriptPlugin && BatStartScriptPlugin
 
   val jolokiaConfig = config("jolokia-jvm").hide
 
   override lazy val projectSettings = Seq(
     ivyConfigurations += jolokiaConfig,
     jolokiaAgent := findJolokiaAgent(update.value),
-    jolokiaVersion := "1.3.6",
+    jolokiaVersion := "1.3.7",
     jolokiaPort := "8778",
     jolokiaHost := "0.0.0.0",
     jolokiaProtocol := "https",
