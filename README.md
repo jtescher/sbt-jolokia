@@ -28,7 +28,7 @@ includes and initializes it (e.g. the SBT plugin for Play Framework 2.4.x).
 Add the following to your `project/plugins.sbt` file:
 
 ```scala
-addSbtPlugin("com.jatescher" % "sbt-jolokia" % "1.1.0")
+addSbtPlugin("com.jatescher" % "sbt-jolokia" % "1.1.1")
 ```
 
 To use the Jolokia settings in your project, add the `Jolokia` auto-plugin to your project.
