@@ -4,11 +4,11 @@ organization := "com.jatescher"
 
 name := """sbt-jolokia"""
 
-version := "1.1.0"
+version := "1.1.1"
 
 scalaVersion := "2.10.6"
 
-addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.2.0" % "provided")
+addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.3.2" % "provided")
 
 publishMavenStyle := false
 
