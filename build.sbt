@@ -23,7 +23,7 @@ lazy val `sbt-jolokia` = (project in file("."))
     version := "1.1.2",
     sbtPlugin := true,
     crossSbtVersions := Seq("0.13.17", "1.0.4"),
-    addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.34" % "provided")
+    addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.3.4" % "provided")
   )
   .settings(publishSettings: _*)
   .settings(scriptedSettings: _*)
