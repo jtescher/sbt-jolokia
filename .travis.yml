@@ -1,13 +1,14 @@
 language: scala
 script:
-  - sbt ++$TRAVIS_SCALA_VERSION scripted
+  - sbt ^scripted
 scala:
-  - 2.10.6
+  - 2.12.6
 jdk:
   - oraclejdk8
 cache:
   directories:
   - $HOME/.sbt/0.13
+  - $HOME/.sbt/1.0
   - $HOME/.sbt/boot/scala*
   - $HOME/.sbt/cache
   - $HOME/.sbt/launchers
