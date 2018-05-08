@@ -20,7 +20,7 @@ object Jolokia extends AutoPlugin {
 
   import autoImport._
 
-  override def requires = BashStartScriptPlugin && BatStartScriptPlugin
+  override def requires: Plugins = BashStartScriptPlugin && BatStartScriptPlugin
 
   val jolokiaConfig = config("jolokia-jvm").hide
 
@@ -41,7 +41,7 @@ object Jolokia extends AutoPlugin {
     bashScriptExtraDefines += """addJava "-javaagent:${app_home}/../jolokia/jolokia.jar=port=${JOLOKIA_PORT},host=${JOLOKIA_HOST},protocol=${JOLOKIA_PROTOCOL}""""
   )
 
-  private[this] val jolokiaFilter: DependencyFilter = configurationFilter("jolokia-jvm") && artifactFilter(`type` = "jar", classifier = "agent")
+  private[this] val jolokiaFilter = configurationFilter("jolokia-jvm") && artifactFilter(`type` = "jar", classifier = "agent")
 
   def findJolokiaAgent(report: UpdateReport) = report.matching(jolokiaFilter).head
 

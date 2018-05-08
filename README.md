@@ -6,6 +6,8 @@
 
 Jolokia support for any artifacts built with sbt-native-packager.
 
+SBT versions `0.13` and `1.0` are supported.
+
 ## Useful Links
 
 The following is a list of useful links related to Jolokia
@@ -28,7 +30,7 @@ includes and initializes it (e.g. the SBT plugin for Play Framework 2.4.x).
 Add the following to your `project/plugins.sbt` file:
 
 ```scala
-addSbtPlugin("com.jatescher" % "sbt-jolokia" % "1.1.1")
+addSbtPlugin("com.jatescher" % "sbt-jolokia" % "1.1.2")
 ```
 
 To use the Jolokia settings in your project, add the `Jolokia` auto-plugin to your project.
