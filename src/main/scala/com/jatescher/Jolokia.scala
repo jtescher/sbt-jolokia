@@ -16,6 +16,7 @@ object Jolokia extends AutoPlugin {
     val jolokiaPort = settingKey[String]("Jolokia port")
     val jolokiaHost = settingKey[String]("Jolokia host")
     val jolokiaProtocol = settingKey[String]("Jolokia protocol")
+    val jolokiaPolicyLocation = settingKey[String]("Jolokia policy location")
   }
 
   import autoImport._
@@ -31,6 +32,7 @@ object Jolokia extends AutoPlugin {
     jolokiaPort := "8778",
     jolokiaHost := "0.0.0.0",
     jolokiaProtocol := "https",
+    jolokiaPolicyLocation := "classpath:/jolokia-access.xml",
     libraryDependencies += "org.jolokia" % "jolokia-jvm" % jolokiaVersion.value % jolokiaConfig classifier "agent",
     mappings in Universal ++= Seq(
       jolokiaAgent.value -> "jolokia/jolokia.jar"
@@ -38,7 +40,8 @@ object Jolokia extends AutoPlugin {
     bashScriptExtraDefines += s"JOLOKIA_PORT=${jolokiaPort.value}",
     bashScriptExtraDefines += s"JOLOKIA_HOST=${jolokiaHost.value}",
     bashScriptExtraDefines += s"JOLOKIA_PROTOCOL=${jolokiaProtocol.value}",
-    bashScriptExtraDefines += """addJava "-javaagent:${app_home}/../jolokia/jolokia.jar=port=${JOLOKIA_PORT},host=${JOLOKIA_HOST},protocol=${JOLOKIA_PROTOCOL}""""
+    bashScriptExtraDefines += s"JOLOKIA_POLICY_LOCATION=${jolokiaPolicyLocation.value}",
+    bashScriptExtraDefines += """addJava "-javaagent:${app_home}/../jolokia/jolokia.jar=port=${JOLOKIA_PORT},host=${JOLOKIA_HOST},protocol=${JOLOKIA_PROTOCOL},policyLocation=${JOLOKIA_POLICY_LOCATION}""""
   )
 
   private[this] val jolokiaFilter = configurationFilter("jolokia-jvm") && artifactFilter(`type` = "jar", classifier = "agent")
