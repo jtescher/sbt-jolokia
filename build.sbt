@@ -20,7 +20,7 @@ lazy val `sbt-jolokia` = (project in file("."))
   .settings(
     name := """sbt-jolokia""",
     organization := "com.jatescher",
-    version := "1.1.2",
+    version := "1.1.3",
     sbtPlugin := true,
     crossSbtVersions := Seq("0.13.17", "1.0.4"),
     addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.3.4" % "provided")

@@ -30,7 +30,7 @@ includes and initializes it (e.g. the SBT plugin for Play Framework 2.4.x).
 Add the following to your `project/plugins.sbt` file:
 
 ```scala
-addSbtPlugin("com.jatescher" % "sbt-jolokia" % "1.1.2")
+addSbtPlugin("com.jatescher" % "sbt-jolokia" % "1.1.3")
 ```
 
 To use the Jolokia settings in your project, add the `Jolokia` auto-plugin to your project.
@@ -45,6 +45,12 @@ To use a specific `jolokia-jvm` version, add the following to your `build.sbt` f
 
 ```scala
 jolokiaVersion := "1.3.7"
+```
+
+To set the location of the access policy file (for example, to `/etc/jolokia/jolokia-access.xml`):
+
+```scala
+jolokiaPolicyLocation :="file:/etc/jolokia/jolokia-access.xml"
 ```
 
 ## Testing
