@@ -44,7 +44,7 @@ enablePlugins(Jolokia)
 To use a specific `jolokia-jvm` version, add the following to your `build.sbt` file:
 
 ```scala
-jolokiaVersion := "1.3.7"
+jolokiaVersion := "1.6.0"
 ```
 
 To set the location of the access policy file (for example, to `/etc/jolokia/jolokia-access.xml`):
@@ -53,6 +53,20 @@ To set the location of the access policy file (for example, to `/etc/jolokia/jol
 jolokiaPolicyLocation :="file:/etc/jolokia/jolokia-access.xml"
 ```
 
+To set the specific configurations for your deployment, add the following in your `application.conf`, usually located at `conf/application.conf`
+```scala
+## Jolokia config
+jolokiaHost = ${JOLOKIA_HOST}
+jolokiaPort = ${JOLOKIA_PORT}
+jolokiaProtocol= ${JOLOKIA_PROTOCOL}
+```
+
+Default values are:
+```scala
+jolokiaPort = 8778
+jolokiaHost = 0.0.0.0
+jolokiaProtocol = https
+```
 ## Testing
 
 This project uses `sbt-scripted` to run its tests. To test this project run:
